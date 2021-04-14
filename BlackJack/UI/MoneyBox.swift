@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MoneyBox: View {
+    @EnvironmentObject var dataController: DataController
+
     let amount: Int
 
     var body: some View {
@@ -19,7 +21,7 @@ struct MoneyBox: View {
                     Image("coin")
                         .resizable()
                         .frame(width: 50, height: 50)
-                    Text("$\(amount)")
+                    Text("$\(dataController.balance)")
                         .font(.system(size: geo.size.height - 25))
                         .bold()
                         .foregroundColor(.white)

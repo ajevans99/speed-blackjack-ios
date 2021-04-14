@@ -23,6 +23,8 @@ struct GameAction: View {
 
     let actionType: GameActionType
 
+    let onTap: () -> Void
+
     var body: some View {
         VStack(spacing: 0) {
             Image(actionType.rawValue)
@@ -32,16 +34,20 @@ struct GameAction: View {
                 .bold()
                 .foregroundColor(.white)
         }
+        .onTapGesture(perform: onTap)
     }
 }
 
 struct GameActions: View {
+    @EnvironmentObject var dataController: DataController
+
     var body: some View {
         HStack {
-            GameAction(actionType: .double)
-            GameAction(actionType: .split)
-            GameAction(actionType: .hit)
-            GameAction(actionType: .stand)
+            GameAction(actionType: .double, onTap: dataController.double)
+            GameAction(actionType: .split, onTap: dataController.split)
+                .disabled(!dataController.splittable)
+            GameAction(actionType: .hit, onTap: dataController.hit)
+            GameAction(actionType: .stand, onTap: dataController.stand)
         }
     }
 }

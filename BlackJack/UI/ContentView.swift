@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @EnvironmentObject var dataController: DataController
+
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
             .foregroundColor: UIColor.white
@@ -29,12 +31,19 @@ struct ContentView: View {
                     }
                     .padding(.horizontal)
                     Spacer()
-                    CardStack(cards: [.showing(.init()), .showing(.init())])
+                    CardStack(cards: $dataController.dealerCards)
                     Spacer()
-                    CardStack()
-                    GameActions()
-                        .padding(.vertical, 32)
-                    CoinDeck()
+                    CardStack(cards: $dataController.playerCards)
+                    Spacer()
+                    BetAmountView()
+                    Spacer()
+                    if dataController.gameState == .betting {
+                        CoinDeck()
+                            .padding(.vertical, 32)
+                    } else {
+                        GameActions()
+                            .padding(.vertical, 32)
+                    }
                 }
             }
             .navigationTitle("Blackjack in SwiftUI")

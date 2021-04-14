@@ -16,6 +16,12 @@
 		9390C6E62625735000E8A518 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6E52625735000E8A518 /* CardView.swift */; };
 		9390C6EA262677BD00E8A518 /* CardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6E9262677BD00E8A518 /* CardStack.swift */; };
 		9390C6ED262683BE00E8A518 /* MoneyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6EC262683BE00E8A518 /* MoneyBox.swift */; };
+		9390C6F02626B25900E8A518 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6EF2626B25900E8A518 /* DataController.swift */; };
+		9390C6F32626B53900E8A518 /* CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6F22626B53900E8A518 /* CardState.swift */; };
+		9390C6F62626B54300E8A518 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6F52626B54300E8A518 /* Card.swift */; };
+		9390C6FD2626B57B00E8A518 /* Array+CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6FC2626B57B00E8A518 /* Array+CardState.swift */; };
+		9390C7012626C41A00E8A518 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C7002626C41A00E8A518 /* GameState.swift */; };
+		9390C7042626CC0A00E8A518 /* BetAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C7032626CC0A00E8A518 /* BetAmountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		9390C6E52625735000E8A518 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9390C6E9262677BD00E8A518 /* CardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStack.swift; sourceTree = "<group>"; };
 		9390C6EC262683BE00E8A518 /* MoneyBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBox.swift; sourceTree = "<group>"; };
+		9390C6EF2626B25900E8A518 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		9390C6F22626B53900E8A518 /* CardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardState.swift; sourceTree = "<group>"; };
+		9390C6F52626B54300E8A518 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		9390C6FC2626B57B00E8A518 /* Array+CardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+CardState.swift"; sourceTree = "<group>"; };
+		9390C7002626C41A00E8A518 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		9390C7032626CC0A00E8A518 /* BetAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetAmountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				9390C6C32625548400E8A518 /* BlackJackApp.swift */,
-				9390C6C52625548400E8A518 /* ContentView.swift */,
-				9390C6D32625669B00E8A518 /* CoinDeck.swift */,
-				9390C6D6262569AA00E8A518 /* GameActions.swift */,
-				9390C6E52625735000E8A518 /* CardView.swift */,
-				9390C6E9262677BD00E8A518 /* CardStack.swift */,
-				9390C6EC262683BE00E8A518 /* MoneyBox.swift */,
+				9390C6FA2626B55400E8A518 /* UI */,
+				9390C6F82626B54B00E8A518 /* Model */,
 				9390C6C72625548600E8A518 /* Assets.xcassets */,
 				9390C6CC2625548600E8A518 /* Info.plist */,
 				9390C6C92625548600E8A518 /* Preview Content */,
@@ -82,6 +90,32 @@
 				9390C6CA2625548600E8A518 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9390C6F82626B54B00E8A518 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9390C6EF2626B25900E8A518 /* DataController.swift */,
+				9390C7002626C41A00E8A518 /* GameState.swift */,
+				9390C6F22626B53900E8A518 /* CardState.swift */,
+				9390C6FC2626B57B00E8A518 /* Array+CardState.swift */,
+				9390C6F52626B54300E8A518 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9390C6FA2626B55400E8A518 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9390C6C52625548400E8A518 /* ContentView.swift */,
+				9390C6D32625669B00E8A518 /* CoinDeck.swift */,
+				9390C6EC262683BE00E8A518 /* MoneyBox.swift */,
+				9390C7032626CC0A00E8A518 /* BetAmountView.swift */,
+				9390C6D6262569AA00E8A518 /* GameActions.swift */,
+				9390C6E52625735000E8A518 /* CardView.swift */,
+				9390C6E9262677BD00E8A518 /* CardStack.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,12 +187,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9390C6F32626B53900E8A518 /* CardState.swift in Sources */,
 				9390C6E62625735000E8A518 /* CardView.swift in Sources */,
 				9390C6ED262683BE00E8A518 /* MoneyBox.swift in Sources */,
+				9390C7042626CC0A00E8A518 /* BetAmountView.swift in Sources */,
 				9390C6D42625669B00E8A518 /* CoinDeck.swift in Sources */,
 				9390C6EA262677BD00E8A518 /* CardStack.swift in Sources */,
 				9390C6C62625548400E8A518 /* ContentView.swift in Sources */,
+				9390C6F02626B25900E8A518 /* DataController.swift in Sources */,
+				9390C6F62626B54300E8A518 /* Card.swift in Sources */,
 				9390C6C42625548400E8A518 /* BlackJackApp.swift in Sources */,
+				9390C7012626C41A00E8A518 /* GameState.swift in Sources */,
+				9390C6FD2626B57B00E8A518 /* Array+CardState.swift in Sources */,
 				9390C6D7262569AA00E8A518 /* GameActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
