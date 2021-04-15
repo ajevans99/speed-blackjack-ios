@@ -15,25 +15,35 @@ class DataController: ObservableObject {
     @Published var bettingAmount = 50
 
     // Cards
-    @Published var playerCards: [CardState] = []
-    @Published var dealerCards: [CardState] = []
+    @Published var playerCards = [CardState]()
+    @Published var dealerCards = [CardState]()
 
     @Published var playerBust = false
     @Published var dealerBust = false
+    @Published var splitBust = false
 
     // Split
-    @Published var splitCards: [CardState] = []
+    @Published var splitCards = [CardState]()
+    @Published var splitDeckActive = false
+
+    var isSplit: Bool {
+        !splitCards.isEmpty
+    }
 
     var actionsEnabled: Bool {
         gameState == .playerTurn
     }
 
     var splittable: Bool {
-        actionsEnabled && playerCards.count == 2 && playerCards.first == playerCards.last
+        actionsEnabled &&
+            playerCards.count == 2 &&
+            playerCards.first!.card.isEquivalentInValue(to: playerCards.last!.card) &&
+            !isSplit // Prevents double split
     }
 
     var doubleable: Bool {
-        actionsEnabled && playerCards.count == 2
+        actionsEnabled && ((playerCards.count == 2 && !splitDeckActive) ||
+                            (splitCards.count == 2 && splitDeckActive))
     }
 
     init() {
@@ -42,10 +52,15 @@ class DataController: ObservableObject {
 
     func reset() {
         playerCards = [.init(isHidden: true), .init(isHidden: true)]
+        // split card testing
+//        playerCards = [.init(card: Card(value: .ace, suit: .heart),isHidden: true),
+//                       .init(card: Card(value: .ace, suit: .spade), isHidden: true)]
         dealerCards = [.init(isHidden: true), .init(isHidden: true)]
+        splitCards = []
 
         playerBust = false
         dealerBust = false
+        splitBust = false
     }
 
     func deal() {
@@ -89,46 +104,96 @@ class DataController: ObservableObject {
             outcome = .dealerWin
         }
 
-        change(to: .outcome(outcome))
+        if isSplit {
+            change(to: .outcome(.multiple([outcome, splitOutcome()])))
+        } else {
+            change(to: .outcome(outcome))
+        }
     }
 
     func stand() {
         guard gameState == .playerTurn else { return }
-        change(to: .dealerTurn)
+
+        if isSplit && !splitDeckActive {
+            splitDeckActive = true
+        } else {
+            change(to: .dealerTurn)
+        }
     }
 
     func hit() {
         guard gameState == .playerTurn else { return }
-        objectWillChange.send()
+
         print("hit")
-        playerCards.append(.init(isHidden: false))
 
-        let cardCount = playerCards.blackJackCount.amount
+        if splitDeckActive {
+            splitCards.append(.init(isHidden: false))
 
-        if cardCount > 21 {
-            print("Player bust")
-            playerBust = true
-            change(to: .dealerTurn)
-        }
+            let cardCount = splitCards.blackJackCount.amount
 
-        if cardCount == 21 {
-            print("Auto-stand on 21")
-            change(to: .dealerTurn)
+            if cardCount > 21 {
+                print("Player bust")
+                splitBust = true
+                change(to: .dealerTurn)
+            }
+
+            if cardCount == 21 {
+                print("Auto-stand on 21")
+                change(to: .dealerTurn)
+            }
+        } else {
+            playerCards.append(.init(isHidden: false))
+
+            let cardCount = playerCards.blackJackCount.amount
+
+            if cardCount > 21 {
+                print("Player bust")
+                playerBust = true
+
+                if isSplit && !splitDeckActive {
+                    splitDeckActive = true
+                } else {
+                    change(to: .dealerTurn)
+                }
+            }
+
+            if cardCount == 21 {
+                print("Auto-stand on 21")
+                if isSplit && !splitDeckActive {
+                    splitDeckActive = true
+                } else {
+                    change(to: .dealerTurn)
+                }
+            }
         }
     }
 
     func split() {
         guard gameState == .playerTurn, splittable else { return }
         print("split")
+
+        splitCards.append(playerCards.popLast()!)
+
+        // Deal random new cards
+        playerCards.append(.init(isHidden: false))
+        splitCards.append(.init(isHidden: false))
+
+        balance -= bettingAmount
     }
 
     func double() {
         guard gameState == .playerTurn, doubleable else { return }
         print("double")
+
         playerCards.append(.init(isHidden: false))
+
+        balance -= bettingAmount
         bettingAmount *= 2
+
         playerBust = playerCards.blackJackCount.amount > 21
+
         print("Player bust")
+
         change(to: .dealerTurn)
     }
 
@@ -142,6 +207,7 @@ class DataController: ObservableObject {
             print("New balance \(balance)")
             deal()
         case .dealerTurn:
+            splitDeckActive = false
             _ = dealerCards.popLast()
             dealDealerCard()
         case .outcome(let outcome):
@@ -149,6 +215,23 @@ class DataController: ObservableObject {
             updateBalance(for: outcome)
         }
         print("New state \(newState)")
+    }
+
+    func splitOutcome() -> GameState.OutcomeState {
+        let splitCardsCount = splitCards.blackJackCount.amount
+        let dealerCardsCount = dealerCards.blackJackCount.amount
+
+        if splitCardsCount == 21 && splitCardsCount == 2 {
+            return .playerBlackjack
+        } else if splitCardsCount > 21 {
+            return .playerBust
+        } else if dealerCardsCount == splitCardsCount {
+            return .push
+        } else if splitCardsCount > dealerCardsCount {
+            return .playerWin
+        } else {
+            return .dealerWin
+        }
     }
 
     func updateBalance(for outcome: GameState.OutcomeState) {
@@ -161,6 +244,8 @@ class DataController: ObservableObject {
             balance += bettingAmount
         case .dealerBlackjack, .dealerWin, .playerBust:
             print("House win of $\(bettingAmount)")
+        case .multiple(let outcomes):
+            outcomes.forEach { updateBalance(for: $0) }
         }
     }
 }

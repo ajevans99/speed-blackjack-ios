@@ -31,10 +31,27 @@ struct ContentView: View {
                     CardStack(cards: $dataController.dealerCards,
                               didBust: dataController.dealerBust)
                         .padding(.bottom, 32)
-                    CardStack(cards: $dataController.playerCards,
-                              didBust: dataController.playerBust)
-                        .padding(.bottom, 32)
-                    BetAmountView()
+                    HStack {
+                        CardStack(cards: $dataController.playerCards,
+                                  didBust: dataController.playerBust,
+                                  showBetAmount: true)
+                            .padding(.bottom, 16)
+                            .scaleEffect(
+                                dataController.splitDeckActive ||
+                                    (dataController.isSplit && dataController.gameState != .playerTurn)
+                                    ? 0.75 : 1)
+                            .animation(.linear)
+
+                        if !dataController.splitCards.isEmpty {
+                            CardStack(cards: $dataController.splitCards,
+                                      didBust: dataController.splitBust,
+                                      showBetAmount: true)
+                                .padding(.bottom, 16)
+                                .padding(.leading, 32)
+                                .scaleEffect(dataController.splitDeckActive ? 1 : 0.75)
+                                .animation(.linear)
+                        }
+                    }
 
                     Spacer()
 
@@ -64,6 +81,8 @@ struct ContentView: View {
             Text(outcomeText)
                 .foregroundColor(.white)
                 .bold()
+                .fixedSize(horizontal: false, vertical: true)
+
             HStack {
                 Button(action: {
                     dataController.change(to: .betting)

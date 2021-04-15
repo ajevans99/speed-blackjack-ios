@@ -98,6 +98,10 @@ struct Card: Identifiable, Hashable, CustomDebugStringConvertible {
         self.suit = suit
     }
 
+    func isEquivalentInValue(to other: Card) -> Bool {
+        value.number == other.value.number
+    }
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(value)

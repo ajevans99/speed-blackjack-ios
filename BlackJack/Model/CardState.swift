@@ -8,11 +8,12 @@
 import Foundation
 
 class CardState: ObservableObject, Hashable, Equatable {
-    let card = Card()
+    let card: Card
 
     @Published var isHidden: Bool
 
-    init(isHidden: Bool = true) {
+    init(card: Card = Card(), isHidden: Bool = true) {
+        self.card = card
         self.isHidden = isHidden
     }
 

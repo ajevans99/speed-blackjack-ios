@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9361B03226281BA6006A5617 /* Binding+Equatable.swift */; };
 		9390C6C42625548400E8A518 /* BlackJackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C32625548400E8A518 /* BlackJackApp.swift */; };
 		9390C6C62625548400E8A518 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C52625548400E8A518 /* ContentView.swift */; };
 		9390C6C82625548600E8A518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9390C6C72625548600E8A518 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9361B03226281BA6006A5617 /* Binding+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Equatable.swift"; sourceTree = "<group>"; };
 		9390C6C02625548400E8A518 /* BlackJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9390C6C32625548400E8A518 /* BlackJackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackJackApp.swift; sourceTree = "<group>"; };
 		9390C6C52625548400E8A518 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9361B03526281C30006A5617 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9361B03226281BA6006A5617 /* Binding+Equatable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9390C6B72625548400E8A518 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 				9390C6C32625548400E8A518 /* BlackJackApp.swift */,
 				9390C6FA2626B55400E8A518 /* UI */,
 				9390C6F82626B54B00E8A518 /* Model */,
+				9361B03526281C30006A5617 /* Extensions */,
 				9390C6C72625548600E8A518 /* Assets.xcassets */,
 				9390C6CC2625548600E8A518 /* Info.plist */,
 				9390C6C92625548600E8A518 /* Preview Content */,
@@ -199,6 +210,7 @@
 				9390C6C42625548400E8A518 /* BlackJackApp.swift in Sources */,
 				9390C7012626C41A00E8A518 /* GameState.swift in Sources */,
 				9390C6FD2626B57B00E8A518 /* Array+CardState.swift in Sources */,
+				9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */,
 				9390C6D7262569AA00E8A518 /* GameActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

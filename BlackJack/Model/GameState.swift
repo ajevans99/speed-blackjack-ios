@@ -16,6 +16,7 @@ enum GameState: Equatable {
         case push
         case playerBlackjack
         case dealerBlackjack
+        case multiple([OutcomeState])
 
         var description: String {
             switch self {
@@ -33,6 +34,11 @@ enum GameState: Equatable {
                 return "Wooo! You got a Blackjack! 🎰"
             case .dealerBlackjack:
                 return "No luck. House Blackjack. 🎰"
+            case .multiple(let outcomes):
+                return outcomes.enumerated().reduce(into: "") { (acc, element) in
+                    let (index, outcome) = element
+                    acc += "\(index + 1)) \(outcome.description)\n"
+                }
             }
         }
     }
