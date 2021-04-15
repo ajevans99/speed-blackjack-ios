@@ -24,8 +24,16 @@ class DataController: ObservableObject {
     // Split
     @Published var splitCards: [CardState] = []
 
+    var actionsEnabled: Bool {
+        gameState == .playerTurn
+    }
+
     var splittable: Bool {
-        playerCards.count == 2 && playerCards.first == playerCards.last
+        actionsEnabled && playerCards.count == 2 && playerCards.first == playerCards.last
+    }
+
+    var doubleable: Bool {
+        actionsEnabled && playerCards.count == 2
     }
 
     init() {
@@ -43,6 +51,11 @@ class DataController: ObservableObject {
     func deal() {
         playerCards = [.random, .random]
         dealerCards = [.random, .hidden]
+
+        if playerCards.blackJackCount == .blackjack {
+            print("Player Blackjack!")
+            change(to: .dealerTurn)
+        }
 
         print(playerCards)
     }
@@ -109,7 +122,7 @@ class DataController: ObservableObject {
     }
 
     func double() {
-        guard gameState == .playerTurn else { return }
+        guard gameState == .playerTurn, doubleable else { return }
         print("double")
         playerCards.append(.random)
         bettingAmount *= 2
@@ -119,11 +132,13 @@ class DataController: ObservableObject {
     }
 
     func change(to newState: GameState) {
+        gameState = newState
         switch newState {
         case .betting:
             reset()
         case .playerTurn:
             balance -= bettingAmount
+            print("New balance \(balance)")
             deal()
         case .dealerTurn:
             _ = dealerCards.popLast()
@@ -132,7 +147,7 @@ class DataController: ObservableObject {
             print(outcome)
             updateBalance(for: outcome)
         }
-        gameState = newState
+        print("New state \(newState)")
     }
 
     func updateBalance(for outcome: GameState.OutcomeState) {

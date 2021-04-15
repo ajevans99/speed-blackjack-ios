@@ -10,7 +10,16 @@ import SwiftUI
 struct CardStack: View {
     var cardSize: CGFloat = 150
 
+    @EnvironmentObject var dataController: DataController
+
     @Binding var cards: [CardState]
+
+    var count: String {
+        if case .outcome(_) = dataController.gameState {
+            return cards.blackJackCount.hardText
+        }
+        return cards.blackJackCount.softText
+    }
 
     var body: some View {
         ZStack {
@@ -18,12 +27,9 @@ struct CardStack: View {
                 CardView(card: card)
                     .frame(width: cardSize, height: cardSize)
                     .offset(x: CGFloat(index) * cardSize / 2.5)
-                    .onTapGesture {
-                        print("test")
-                    }
             }
 
-            Text("\(cards.blackJackCount.displayText)")
+            Text(count)
                 .foregroundColor(.black)
                 .padding()
                 .background(

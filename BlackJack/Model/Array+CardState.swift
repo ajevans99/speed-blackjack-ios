@@ -7,16 +7,25 @@
 
 import Foundation
 
-enum BlackjackCount {
+enum BlackjackCount: Equatable {
     case soft(Int)
     case hard(Int)
     case blackjack
 
-    var displayText: String {
+    var softText: String {
         switch self {
         case .soft(let value):
             return "\(value - 10)/\(value)"
         case .hard(let value):
+            return "\(value)"
+        case .blackjack:
+            return "21"
+        }
+    }
+
+    var hardText: String {
+        switch self {
+        case .soft(let value), .hard(let value):
             return "\(value)"
         case .blackjack:
             return "21"

@@ -25,53 +25,72 @@ struct ContentView: View {
 
                 VStack {
                     HStack {
-                        Spacer()
                         MoneyBox(amount: 2500)
                             .frame(width: 200, height: 50)
+                        Spacer()
                     }
                     .padding(.horizontal)
                     Spacer()
-                    CardStack(cards: $dataController.dealerCards)
-                    Spacer()
-                    CardStack(cards: $dataController.playerCards)
-                    Spacer()
-                    BetAmountView()
-                    Spacer()
-                    if dataController.gameState == .dealerTurn {
-                        Button(action: {
-                            dataController.change(to: .betting)
-                        }, label: {
-                            Text("Rebet")
-                                .bold()
-                                .foregroundColor(.white)
-                        })
-                        .frame(minWidth: 100)
-                        .padding()
-                        .background(Color.white.cornerRadius(8))
-
-                        Button(action: {
-                            dataController.change(to: .playerTurn)
-                        }, label: {
-                            Text("Rebet and deal")
-                                .bold()
-                                .foregroundColor(.white)
-                        })
-                        .frame(minWidth: 100)
-                        .padding()
-                        .background(Color.white.cornerRadius(8))
+                    Group {
+                        CardStack(cards: $dataController.dealerCards)
+                        Spacer()
+                        CardStack(cards: $dataController.playerCards)
+                        Spacer()
                     }
+                    BetAmountView()
+
+                    Spacer()
 
                     if dataController.gameState == .betting {
                         CoinDeck()
                             .padding(.vertical, 32)
                     } else {
+                        outcomeButtons
                         GameActions()
-                            .padding(.vertical, 32)
+                            .padding(.bottom, 32)
                     }
                 }
             }
             .navigationTitle("Blackjack in SwiftUI")
         }
+    }
+
+    var outcomeText: String {
+        if case .outcome(let outcome) = dataController.gameState {
+            return outcome.description
+        }
+        return ""
+    }
+
+    var outcomeButtons: some View {
+        Group {
+            Text(outcomeText)
+                .foregroundColor(.white)
+                .bold()
+            HStack {
+                Button(action: {
+                    dataController.change(to: .betting)
+                }, label: {
+                    Text("Rebet")
+                        .bold()
+                })
+                .frame(minWidth: 100)
+                .padding()
+                .background(Color.white.cornerRadius(8))
+
+                Button(action: {
+                    dataController.reset()
+                    dataController.change(to: .playerTurn)
+                }, label: {
+                    Text("Rebet and deal")
+                        .bold()
+                })
+                .frame(minWidth: 100)
+                .padding()
+                .background(Color.white.cornerRadius(8))
+            }
+        }
+        .opacity(outcomeText.isEmpty ? 0 : 1)
     }
 }
 

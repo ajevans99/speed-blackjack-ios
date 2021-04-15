@@ -15,7 +15,12 @@ struct MoneyBox: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Color.purple
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(LinearGradient(
+                        gradient: .init(colors: [Color("purple-3"), Color("background")]),
+                        startPoint: .init(x: 0, y: 0.5),
+                        endPoint: .init(x: 1, y: 0.5)
+                      ))
                     .frame(width: geo.size.width - 30, height: geo.size.height - 20)
                 HStack {
                     Image("coin")
@@ -27,11 +32,11 @@ struct MoneyBox: View {
                         .foregroundColor(.white)
                         .padding(.leading, -8)
                     Spacer()
-                    Image(systemName: "plus.square.fill")
-                        .resizable()
-                        .frame(width: geo.size.height - 15, height: geo.size.height - 15)
-                        .foregroundColor(.orange)
-                        .background(Color.white.cornerRadius(8))
+//                    Image(systemName: "plus.square.fill")
+//                        .resizable()
+//                        .frame(width: geo.size.height - 15, height: geo.size.height - 15)
+//                        .foregroundColor(.orange)
+//                        .background(Color.white.cornerRadius(8))
                 }
             }
         }

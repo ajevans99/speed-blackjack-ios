@@ -16,6 +16,25 @@ enum GameState: Equatable {
         case push
         case playerBlackjack
         case dealerBlackjack
+
+        var description: String {
+            switch self {
+            case .dealerWin:
+                return "House wins 🙁"
+            case .playerWin:
+                return "You win! 🎉"
+            case .dealerBust:
+                return "You win. Dealer busted. 🥳"
+            case .playerBust:
+                return "House wins. You busted. 🪦"
+            case .push:
+                return "Push. 👉👈"
+            case .playerBlackjack:
+                return "Wooo! You got a Blackjack! 🎰"
+            case .dealerBlackjack:
+                return "No luck. House Blackjack. 🎰"
+            }
+        }
     }
 
     case betting
@@ -24,4 +43,13 @@ enum GameState: Equatable {
     case dealerTurn
 
     case outcome(OutcomeState)
+
+    var description: String {
+        switch self {
+        case .betting, .playerTurn, .dealerTurn:
+            return "\(self)"
+        case .outcome(let outcome):
+            return "Outcome: \(outcome.description)"
+        }
+    }
 }
