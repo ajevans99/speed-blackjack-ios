@@ -77,6 +77,7 @@ class DataController: ObservableObject {
         } else if dealerCardsCount == playerCardsCount {
             outcome = .push
         } else if dealerCardsCount > 21 {
+            dealerBust = true
             outcome = .dealerBust
         } else if dealerCardsCount == 21 && dealerCards.count == 2 {
             outcome = .dealerBlackjack

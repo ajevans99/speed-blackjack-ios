@@ -14,6 +14,8 @@ struct CardStack: View {
 
     @Binding var cards: [CardState]
 
+    var didBust = false
+
     var count: String {
         if case .outcome(_) = dataController.gameState {
             return cards.blackJackCount.hardText
@@ -37,21 +39,35 @@ struct CardStack: View {
             }
             .transition(.opacity)
 
-            Text(count)
-                .foregroundColor(.black)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(Color.orange, lineWidth: 5)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8).fill(Color.yellow)
-                        )
-                )
-                .transition(.slide)
-                .offset(x: (cardSize / 2.5) * CGFloat(cards.count - 1),
-                        y: cardSize / 2)
+            if count != "0" {
+                Text(count)
+                    .foregroundColor(.black)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(Color.orange, lineWidth: 5)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8).fill(Color.yellow)
+                            )
+                    )
+                    .transition(.slide)
+                    .offset(x: (cardSize / 2.5) * CGFloat(cards.count - 1),
+                            y: cardSize / 2)
+            }
         }
         .offset(x: -(CGFloat(cards.count - 2) * cardSize / 2.5) / 2)
+        .overlay(
+            Text("Busted")
+                .font(.system(size: 16, weight: .heavy, design: .rounded))
+                .foregroundColor(Color.white)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color("bust"))
+                )
+                .opacity(didBust ? 1 : 0)
+                .animation(.linear)
+        )
     }
 }
 

@@ -32,9 +32,9 @@ struct ContentView: View {
                     .padding(.horizontal)
                     Spacer()
                     Group {
-                        CardStack(cards: $dataController.dealerCards)
+                        CardStack(cards: $dataController.dealerCards, didBust: dataController.dealerBust)
                         Spacer()
-                        CardStack(cards: $dataController.playerCards)
+                        CardStack(cards: $dataController.playerCards, didBust: dataController.playerBust)
                         Spacer()
                     }
                     BetAmountView()
@@ -59,7 +59,7 @@ struct ContentView: View {
         if case .outcome(let outcome) = dataController.gameState {
             return outcome.description
         }
-        return ""
+        return "-"
     }
 
     var outcomeButtons: some View {
@@ -90,7 +90,7 @@ struct ContentView: View {
                 .background(Color.white.cornerRadius(8))
             }
         }
-        .opacity(outcomeText.isEmpty ? 0 : 1)
+        .opacity(outcomeText == "-" ? 0 : 1)
     }
 }
 
