@@ -185,16 +185,29 @@ class DataController: ObservableObject {
         guard gameState == .playerTurn, doubleable else { return }
         print("double")
 
-        playerCards.append(.init(isHidden: false))
+        if splitDeckActive {
+            splitCards.append(.init(isHidden: false))
+        } else {
+            playerCards.append(.init(isHidden: false))
+        }
 
+        // TODO: Handle double balance for split case
         balance -= bettingAmount
         bettingAmount *= 2
 
-        playerBust = playerCards.blackJackCount.amount > 21
+        if splitDeckActive {
+            splitBust = playerCards.blackJackCount.amount > 21
+        } else {
+            playerBust = playerCards.blackJackCount.amount > 21
+        }
 
         print("Player bust")
 
-        change(to: .dealerTurn)
+        if isSplit && !splitDeckActive {
+            splitDeckActive = true
+        } else {
+            change(to: .dealerTurn)
+        }
     }
 
     func change(to newState: GameState) {
