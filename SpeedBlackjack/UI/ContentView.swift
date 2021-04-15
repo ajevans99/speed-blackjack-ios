@@ -65,7 +65,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationTitle("Blackjack in SwiftUI")
+            .navigationTitle("Speed Blackjack")
         }
     }
 

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9361B03226281BA6006A5617 /* Binding+Equatable.swift */; };
-		9390C6C42625548400E8A518 /* BlackJackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C32625548400E8A518 /* BlackJackApp.swift */; };
+		9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */; };
 		9390C6C62625548400E8A518 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C52625548400E8A518 /* ContentView.swift */; };
 		9390C6C82625548600E8A518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9390C6C72625548600E8A518 /* Assets.xcassets */; };
 		9390C6CB2625548600E8A518 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9390C6CA2625548600E8A518 /* Preview Assets.xcassets */; };
@@ -27,8 +27,8 @@
 
 /* Begin PBXFileReference section */
 		9361B03226281BA6006A5617 /* Binding+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Equatable.swift"; sourceTree = "<group>"; };
-		9390C6C02625548400E8A518 /* BlackJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9390C6C32625548400E8A518 /* BlackJackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackJackApp.swift; sourceTree = "<group>"; };
+		9390C6C02625548400E8A518 /* SpeedBlackjack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedBlackjack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedBlackjackApp.swift; sourceTree = "<group>"; };
 		9390C6C52625548400E8A518 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9390C6C72625548600E8A518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9390C6CA2625548600E8A518 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		9390C6B72625548400E8A518 = {
 			isa = PBXGroup;
 			children = (
-				9390C6C22625548400E8A518 /* BlackJack */,
+				9390C6C22625548400E8A518 /* SpeedBlackjack */,
 				9390C6C12625548400E8A518 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,15 +76,15 @@
 		9390C6C12625548400E8A518 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9390C6C02625548400E8A518 /* BlackJack.app */,
+				9390C6C02625548400E8A518 /* SpeedBlackjack.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9390C6C22625548400E8A518 /* BlackJack */ = {
+		9390C6C22625548400E8A518 /* SpeedBlackjack */ = {
 			isa = PBXGroup;
 			children = (
-				9390C6C32625548400E8A518 /* BlackJackApp.swift */,
+				9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */,
 				9390C6FA2626B55400E8A518 /* UI */,
 				9390C6F82626B54B00E8A518 /* Model */,
 				9361B03526281C30006A5617 /* Extensions */,
@@ -92,7 +92,7 @@
 				9390C6CC2625548600E8A518 /* Info.plist */,
 				9390C6C92625548600E8A518 /* Preview Content */,
 			);
-			path = BlackJack;
+			path = SpeedBlackjack;
 			sourceTree = "<group>";
 		};
 		9390C6C92625548600E8A518 /* Preview Content */ = {
@@ -132,9 +132,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9390C6BF2625548400E8A518 /* BlackJack */ = {
+		9390C6BF2625548400E8A518 /* SpeedBlackjack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9390C6CF2625548600E8A518 /* Build configuration list for PBXNativeTarget "BlackJack" */;
+			buildConfigurationList = 9390C6CF2625548600E8A518 /* Build configuration list for PBXNativeTarget "SpeedBlackjack" */;
 			buildPhases = (
 				9390C6BC2625548400E8A518 /* Sources */,
 				9390C6BD2625548400E8A518 /* Frameworks */,
@@ -144,9 +144,9 @@
 			);
 			dependencies = (
 			);
-			name = BlackJack;
+			name = SpeedBlackjack;
 			productName = BlackJack;
-			productReference = 9390C6C02625548400E8A518 /* BlackJack.app */;
+			productReference = 9390C6C02625548400E8A518 /* SpeedBlackjack.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -163,7 +163,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9390C6BB2625548400E8A518 /* Build configuration list for PBXProject "BlackJack" */;
+			buildConfigurationList = 9390C6BB2625548400E8A518 /* Build configuration list for PBXProject "SpeedBlackjack" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -176,7 +176,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9390C6BF2625548400E8A518 /* BlackJack */,
+				9390C6BF2625548400E8A518 /* SpeedBlackjack */,
 			);
 		};
 /* End PBXProject section */
@@ -207,7 +207,7 @@
 				9390C6C62625548400E8A518 /* ContentView.swift in Sources */,
 				9390C6F02626B25900E8A518 /* DataController.swift in Sources */,
 				9390C6F62626B54300E8A518 /* Card.swift in Sources */,
-				9390C6C42625548400E8A518 /* BlackJackApp.swift in Sources */,
+				9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */,
 				9390C7012626C41A00E8A518 /* GameState.swift in Sources */,
 				9390C6FD2626B57B00E8A518 /* Array+CardState.swift in Sources */,
 				9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */,
@@ -340,16 +340,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BlackJack/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SpeedBlackjack/Preview Content\"";
 				DEVELOPMENT_TEAM = ML89Z5TSJK;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BlackJack/Info.plist;
+				INFOPLIST_FILE = SpeedBlackjack/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.ajevans.BlackJack;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ajevans.SpeedBlackjack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,16 +362,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BlackJack/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SpeedBlackjack/Preview Content\"";
 				DEVELOPMENT_TEAM = ML89Z5TSJK;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BlackJack/Info.plist;
+				INFOPLIST_FILE = SpeedBlackjack/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.ajevans.BlackJack;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ajevans.SpeedBlackjack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -381,7 +381,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9390C6BB2625548400E8A518 /* Build configuration list for PBXProject "BlackJack" */ = {
+		9390C6BB2625548400E8A518 /* Build configuration list for PBXProject "SpeedBlackjack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9390C6CD2625548600E8A518 /* Debug */,
@@ -390,7 +390,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9390C6CF2625548600E8A518 /* Build configuration list for PBXNativeTarget "BlackJack" */ = {
+		9390C6CF2625548600E8A518 /* Build configuration list for PBXNativeTarget "SpeedBlackjack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9390C6D02625548600E8A518 /* Debug */,
