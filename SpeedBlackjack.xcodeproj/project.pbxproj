@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93587ADC2628A34D00F10063 /* PlayerCardStacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587ADB2628A34D00F10063 /* PlayerCardStacks.swift */; };
+		93587ADF2628A38800F10063 /* DealerCardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587ADE2628A38800F10063 /* DealerCardStack.swift */; };
+		93587AE22628A57000F10063 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AE12628A57000F10063 /* TitleView.swift */; };
+		93587AE52628A60200F10063 /* GameAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AE42628A60200F10063 /* GameAction.swift */; };
+		93587AE82628A61F00F10063 /* GameActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AE72628A61F00F10063 /* GameActionType.swift */; };
+		93587AEB2628A63500F10063 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AEA2628A63500F10063 /* FlipView.swift */; };
+		93587AEE2628A66900F10063 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AED2628A66900F10063 /* Coin.swift */; };
 		9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9361B03226281BA6006A5617 /* Binding+Equatable.swift */; };
 		9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */; };
 		9390C6C62625548400E8A518 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C52625548400E8A518 /* ContentView.swift */; };
@@ -17,7 +24,7 @@
 		9390C6E62625735000E8A518 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6E52625735000E8A518 /* CardView.swift */; };
 		9390C6EA262677BD00E8A518 /* CardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6E9262677BD00E8A518 /* CardStack.swift */; };
 		9390C6ED262683BE00E8A518 /* MoneyBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6EC262683BE00E8A518 /* MoneyBox.swift */; };
-		9390C6F02626B25900E8A518 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6EF2626B25900E8A518 /* DataController.swift */; };
+		9390C6F02626B25900E8A518 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6EF2626B25900E8A518 /* GameController.swift */; };
 		9390C6F32626B53900E8A518 /* CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6F22626B53900E8A518 /* CardState.swift */; };
 		9390C6F62626B54300E8A518 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6F52626B54300E8A518 /* Card.swift */; };
 		9390C6FD2626B57B00E8A518 /* Array+CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6FC2626B57B00E8A518 /* Array+CardState.swift */; };
@@ -26,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93587ADB2628A34D00F10063 /* PlayerCardStacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCardStacks.swift; sourceTree = "<group>"; };
+		93587ADE2628A38800F10063 /* DealerCardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCardStack.swift; sourceTree = "<group>"; };
+		93587AE12628A57000F10063 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		93587AE42628A60200F10063 /* GameAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAction.swift; sourceTree = "<group>"; };
+		93587AE72628A61F00F10063 /* GameActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionType.swift; sourceTree = "<group>"; };
+		93587AEA2628A63500F10063 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		93587AED2628A66900F10063 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		9361B03226281BA6006A5617 /* Binding+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Equatable.swift"; sourceTree = "<group>"; };
 		9390C6C02625548400E8A518 /* SpeedBlackjack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedBlackjack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedBlackjackApp.swift; sourceTree = "<group>"; };
@@ -38,7 +52,7 @@
 		9390C6E52625735000E8A518 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9390C6E9262677BD00E8A518 /* CardStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStack.swift; sourceTree = "<group>"; };
 		9390C6EC262683BE00E8A518 /* MoneyBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBox.swift; sourceTree = "<group>"; };
-		9390C6EF2626B25900E8A518 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		9390C6EF2626B25900E8A518 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		9390C6F22626B53900E8A518 /* CardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardState.swift; sourceTree = "<group>"; };
 		9390C6F52626B54300E8A518 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		9390C6FC2626B57B00E8A518 /* Array+CardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+CardState.swift"; sourceTree = "<group>"; };
@@ -57,6 +71,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93587AF02628A6AA00F10063 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				93587ADB2628A34D00F10063 /* PlayerCardStacks.swift */,
+				93587ADE2628A38800F10063 /* DealerCardStack.swift */,
+				9390C6E9262677BD00E8A518 /* CardStack.swift */,
+				9390C6E52625735000E8A518 /* CardView.swift */,
+				93587AEA2628A63500F10063 /* FlipView.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
 		9361B03526281C30006A5617 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +132,8 @@
 		9390C6F82626B54B00E8A518 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9390C6EF2626B25900E8A518 /* DataController.swift */,
+				9390C6EF2626B25900E8A518 /* GameController.swift */,
+				93587AE72628A61F00F10063 /* GameActionType.swift */,
 				9390C7002626C41A00E8A518 /* GameState.swift */,
 				9390C6F22626B53900E8A518 /* CardState.swift */,
 				9390C6FC2626B57B00E8A518 /* Array+CardState.swift */,
@@ -119,12 +146,14 @@
 			isa = PBXGroup;
 			children = (
 				9390C6C52625548400E8A518 /* ContentView.swift */,
-				9390C6D32625669B00E8A518 /* CoinDeck.swift */,
+				93587AE12628A57000F10063 /* TitleView.swift */,
 				9390C6EC262683BE00E8A518 /* MoneyBox.swift */,
+				93587AF02628A6AA00F10063 /* Cards */,
 				9390C7032626CC0A00E8A518 /* BetAmountView.swift */,
+				9390C6D32625669B00E8A518 /* CoinDeck.swift */,
+				93587AED2628A66900F10063 /* Coin.swift */,
+				93587AE42628A60200F10063 /* GameAction.swift */,
 				9390C6D6262569AA00E8A518 /* GameActions.swift */,
-				9390C6E52625735000E8A518 /* CardView.swift */,
-				9390C6E9262677BD00E8A518 /* CardStack.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -199,17 +228,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				9390C6F32626B53900E8A518 /* CardState.swift in Sources */,
+				93587ADC2628A34D00F10063 /* PlayerCardStacks.swift in Sources */,
 				9390C6E62625735000E8A518 /* CardView.swift in Sources */,
 				9390C6ED262683BE00E8A518 /* MoneyBox.swift in Sources */,
 				9390C7042626CC0A00E8A518 /* BetAmountView.swift in Sources */,
+				93587AE82628A61F00F10063 /* GameActionType.swift in Sources */,
+				93587AEE2628A66900F10063 /* Coin.swift in Sources */,
 				9390C6D42625669B00E8A518 /* CoinDeck.swift in Sources */,
 				9390C6EA262677BD00E8A518 /* CardStack.swift in Sources */,
+				93587AE52628A60200F10063 /* GameAction.swift in Sources */,
 				9390C6C62625548400E8A518 /* ContentView.swift in Sources */,
-				9390C6F02626B25900E8A518 /* DataController.swift in Sources */,
+				9390C6F02626B25900E8A518 /* GameController.swift in Sources */,
 				9390C6F62626B54300E8A518 /* Card.swift in Sources */,
 				9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */,
 				9390C7012626C41A00E8A518 /* GameState.swift in Sources */,
+				93587AE22628A57000F10063 /* TitleView.swift in Sources */,
+				93587AEB2628A63500F10063 /* FlipView.swift in Sources */,
 				9390C6FD2626B57B00E8A518 /* Array+CardState.swift in Sources */,
+				93587ADF2628A38800F10063 /* DealerCardStack.swift in Sources */,
 				9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */,
 				9390C6D7262569AA00E8A518 /* GameActions.swift in Sources */,
 			);

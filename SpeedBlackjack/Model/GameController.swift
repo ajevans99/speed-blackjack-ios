@@ -1,5 +1,5 @@
 //
-//  DataController.swift
+//  GameController.swift
 //  BlackJack
 //
 //  Created by Austin Evans on 4/14/21.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class DataController: ObservableObject {
+class GameController: ObservableObject {
     // Game state
     @Published var gameState: GameState = .betting
     @Published var balance = 2500

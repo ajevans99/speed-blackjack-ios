@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct BetAmountView: View {
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var gameController: GameController
 
     var body: some View {
         HStack {
             Image("bet-coin")
                 .resizable()
                 .frame(width: 30, height: 30)
-            Text("$\(dataController.bettingAmount)")
+            Text("$\(gameController.bettingAmount)")
                 .bold()
                 .foregroundColor(.white)
         }

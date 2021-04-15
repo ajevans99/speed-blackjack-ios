@@ -10,7 +10,7 @@ import SwiftUI
 struct CardStack: View {
     var cardSize: CGFloat = 125
 
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var gameController: GameController
 
     @Binding var cards: [CardState]
 
@@ -18,14 +18,14 @@ struct CardStack: View {
     var showBetAmount = false
 
     var count: String {
-        if case .outcome(_) = dataController.gameState {
+        if case .outcome(_) = gameController.gameState {
             return cards.blackJackCount.hardText
         }
         return cards.blackJackCount.softText
     }
 
     var animate: Bool {
-        dataController.gameState != .betting
+        gameController.gameState != .betting
     }
 
     var body: some View {

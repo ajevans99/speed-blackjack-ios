@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct SpeedBlackjackApp: App {
-    @StateObject var dataController = DataController()
+    @StateObject var gameController = GameController()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(dataController)
+                .environmentObject(gameController)
         }
     }
 }

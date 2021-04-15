@@ -7,33 +7,14 @@
 
 import SwiftUI
 
-struct Coin: View {
-    @EnvironmentObject var dataController: DataController
-
-    static let size: CGFloat = 80
-
-    let amount: Int
-
-    var body: some View {
-        Image("coin-\(amount)")
-            .resizable()
-            .frame(width: Self.size, height: Self.size)
-            .accessibility(addTraits: .isButton)
-            .onTapGesture {
-                dataController.bettingAmount += amount
-            }
-
-    }
-}
-
 struct CoinDeck: View {
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var gameController: GameController
 
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    dataController.bettingAmount = 0
+                    gameController.bettingAmount = 0
                 }, label: {
                     Text("Clear")
                         .frame(minWidth: 100)
@@ -42,7 +23,7 @@ struct CoinDeck: View {
                 })
 
                 Button(action: {
-                    dataController.change(to: .playerTurn)
+                    gameController.change(to: .playerTurn)
                 }, label: {
                     Text("Deal")
                         .frame(minWidth: 100)

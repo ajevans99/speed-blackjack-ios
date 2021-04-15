@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// I'm shocked this worked, but clearing `splitCards` in `DataController`
+/// I'm shocked this worked, but clearing `splitCards` in `gameController`
 /// caused a crash before in the ForLoop for `CardStack`
 /// https://stackoverflow.com/a/64760104
 extension Binding where Value: Equatable {

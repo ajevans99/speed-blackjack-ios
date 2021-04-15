@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @EnvironmentObject var dataController: DataController
+    @EnvironmentObject var gameController: GameController
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -18,59 +18,34 @@ struct ContentView: View {
     }
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color("background")
-                    .ignoresSafeArea()
+        ZStack {
+            Color("background")
+                .ignoresSafeArea()
 
-                VStack {
-                    MoneyBox(amount: 2500)
-                        .frame(height: 50)
-                        .padding()
+            VStack {
+                TitleView("Speed Blackjack")
 
-                    CardStack(cards: $dataController.dealerCards,
-                              didBust: dataController.dealerBust)
+                MoneyBox(amount: 2500)
+
+                DealerCardStack()
+                PlayerCardStacks()
+
+                Spacer()
+
+                if gameController.gameState == .betting {
+                    CoinDeck()
+                        .padding(.vertical, 32)
+                } else {
+                    outcomeButtons
+                    GameActions()
                         .padding(.bottom, 32)
-                    HStack {
-                        CardStack(cards: $dataController.playerCards,
-                                  didBust: dataController.playerBust,
-                                  showBetAmount: true)
-                            .padding(.bottom, 16)
-                            .scaleEffect(
-                                dataController.splitDeckActive ||
-                                    (dataController.isSplit && dataController.gameState != .playerTurn)
-                                    ? 0.75 : 1)
-                            .animation(.linear)
-
-                        if !dataController.splitCards.isEmpty {
-                            CardStack(cards: $dataController.splitCards,
-                                      didBust: dataController.splitBust,
-                                      showBetAmount: true)
-                                .padding(.bottom, 16)
-                                .padding(.leading, 32)
-                                .scaleEffect(dataController.splitDeckActive ? 1 : 0.75)
-                                .animation(.linear)
-                        }
-                    }
-
-                    Spacer()
-
-                    if dataController.gameState == .betting {
-                        CoinDeck()
-                            .padding(.vertical, 32)
-                    } else {
-                        outcomeButtons
-                        GameActions()
-                            .padding(.bottom, 32)
-                    }
                 }
             }
-            .navigationTitle("Speed Blackjack")
         }
     }
 
     var outcomeText: String {
-        if case .outcome(let outcome) = dataController.gameState {
+        if case .outcome(let outcome) = gameController.gameState {
             return outcome.description
         }
         return "-"
@@ -85,7 +60,7 @@ struct ContentView: View {
 
             HStack {
                 Button(action: {
-                    dataController.change(to: .betting)
+                    gameController.change(to: .betting)
                 }, label: {
                     Text("Rebet")
                         .bold()
@@ -95,8 +70,8 @@ struct ContentView: View {
                 .background(Color.white.cornerRadius(8))
 
                 Button(action: {
-                    dataController.reset()
-                    dataController.change(to: .playerTurn)
+                    gameController.reset()
+                    gameController.change(to: .playerTurn)
                 }, label: {
                     Text("Rebet and deal")
                         .bold()
