@@ -18,6 +18,9 @@ class DataController: ObservableObject {
     @Published var playerCards: [CardState] = []
     @Published var dealerCards: [CardState] = []
 
+    @Published var playerBust = false
+    @Published var dealerBust = false
+
     // Split
     @Published var splitCards: [CardState] = []
 
@@ -32,6 +35,9 @@ class DataController: ObservableObject {
     func reset() {
         playerCards = [.hidden, .hidden]
         dealerCards = [.hidden, .hidden]
+
+        playerBust = false
+        dealerBust = false
     }
 
     func deal() {
@@ -43,34 +49,72 @@ class DataController: ObservableObject {
 
     func dealDealerCard() {
         dealerCards.append(.random)
-        if dealerCards.blackJackCount.maxAmount < 17 {
+        if !playerBust,  dealerCards.blackJackCount.amount < 17 {
             dealDealerCard()
+            return
         }
+
+        let dealerCardsCount = dealerCards.blackJackCount.amount
+        let playerCardsCount = playerCards.blackJackCount.amount
+
+        let outcome: GameState.OutcomeState
+
+        if playerCardsCount > 21 {
+            outcome = .playerBust
+        } else if dealerCardsCount == playerCardsCount {
+            outcome = .push
+        } else if dealerCardsCount > 21 {
+            outcome = .dealerBust
+        } else if dealerCardsCount == 21 && dealerCards.count == 2 {
+            outcome = .dealerBlackjack
+        } else if playerCardsCount == 21 && playerCards.count == 2 {
+            outcome = .playerBlackjack
+        } else if playerCardsCount > dealerCardsCount {
+            outcome = .playerWin
+        } else {
+            outcome = .dealerWin
+        }
+
+        change(to: .outcome(outcome))
     }
 
     func stand() {
+        guard gameState == .playerTurn else { return }
         change(to: .dealerTurn)
     }
 
     func hit() {
+        guard gameState == .playerTurn else { return }
         objectWillChange.send()
         print("hit")
-        let newCardState = CardState.random
-//        print(newCardState)
-//        print(playerCards.map { $0.hashValue })
-//        print(newCardState.hashValue)
-        playerCards.append(newCardState)
-//        print(playerCards)
+        playerCards.append(.random)
+
+        let cardCount = playerCards.blackJackCount.amount
+
+        if cardCount > 21 {
+            print("Player bust")
+            playerBust = true
+            change(to: .dealerTurn)
+        }
+
+        if cardCount == 21 {
+            print("Auto-stand on 21")
+            change(to: .dealerTurn)
+        }
     }
 
     func split() {
+        guard gameState == .playerTurn, splittable else { return }
         print("split")
     }
 
     func double() {
+        guard gameState == .playerTurn else { return }
         print("double")
         playerCards.append(.random)
         bettingAmount *= 2
+        playerBust = playerCards.blackJackCount.amount > 21
+        print("Player bust")
         change(to: .dealerTurn)
     }
 
@@ -84,7 +128,23 @@ class DataController: ObservableObject {
         case .dealerTurn:
             _ = dealerCards.popLast()
             dealDealerCard()
+        case .outcome(let outcome):
+            print(outcome)
+            updateBalance(for: outcome)
         }
         gameState = newState
+    }
+
+    func updateBalance(for outcome: GameState.OutcomeState) {
+        switch outcome {
+        case .playerBlackjack:
+            balance += bettingAmount * 2 + Int(ceil(Double(bettingAmount / 2)))
+        case .dealerBust, .playerWin:
+            balance += bettingAmount * 2
+        case .push:
+            balance += bettingAmount
+        case .dealerBlackjack, .dealerWin, .playerBust:
+            print("House win of $\(bettingAmount)")
+        }
     }
 }

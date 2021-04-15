@@ -27,10 +27,10 @@ struct CardStack: View {
                 .foregroundColor(.black)
                 .padding()
                 .background(
-                    Ellipse()
+                    RoundedRectangle(cornerRadius: 8)
                         .strokeBorder(Color.orange, lineWidth: 5)
                         .background(
-                            Ellipse().fill(Color.yellow)
+                            RoundedRectangle(cornerRadius: 8).fill(Color.yellow)
                         )
                 )
                 .offset(x: (cardSize / 2.5) * CGFloat(cards.count - 1),

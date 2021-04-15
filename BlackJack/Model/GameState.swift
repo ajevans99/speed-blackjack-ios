@@ -7,9 +7,21 @@
 
 import Foundation
 
-enum GameState {
+enum GameState: Equatable {
+    enum OutcomeState: Equatable {
+        case dealerWin
+        case playerWin
+        case dealerBust
+        case playerBust
+        case push
+        case playerBlackjack
+        case dealerBlackjack
+    }
+
     case betting
-//    case dealerBlackjack
+
     case playerTurn
     case dealerTurn
+
+    case outcome(OutcomeState)
 }

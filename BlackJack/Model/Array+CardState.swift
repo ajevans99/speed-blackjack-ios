@@ -23,7 +23,7 @@ enum BlackjackCount {
         }
     }
 
-    var maxAmount: Int {
+    var amount: Int {
         switch self {
         case .soft(let amount), .hard(let amount):
             return amount

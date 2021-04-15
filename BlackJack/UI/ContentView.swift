@@ -37,6 +37,30 @@ struct ContentView: View {
                     Spacer()
                     BetAmountView()
                     Spacer()
+                    if dataController.gameState == .dealerTurn {
+                        Button(action: {
+                            dataController.change(to: .betting)
+                        }, label: {
+                            Text("Rebet")
+                                .bold()
+                                .foregroundColor(.white)
+                        })
+                        .frame(minWidth: 100)
+                        .padding()
+                        .background(Color.white.cornerRadius(8))
+
+                        Button(action: {
+                            dataController.change(to: .playerTurn)
+                        }, label: {
+                            Text("Rebet and deal")
+                                .bold()
+                                .foregroundColor(.white)
+                        })
+                        .frame(minWidth: 100)
+                        .padding()
+                        .background(Color.white.cornerRadius(8))
+                    }
+
                     if dataController.gameState == .betting {
                         CoinDeck()
                             .padding(.vertical, 32)
