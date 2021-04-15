@@ -41,16 +41,16 @@ class DataController: ObservableObject {
     }
 
     func reset() {
-        playerCards = [.hidden, .hidden]
-        dealerCards = [.hidden, .hidden]
+        playerCards = [.init(isHidden: true), .init(isHidden: true)]
+        dealerCards = [.init(isHidden: true), .init(isHidden: true)]
 
         playerBust = false
         dealerBust = false
     }
 
     func deal() {
-        playerCards = [.random, .random]
-        dealerCards = [.random, .hidden]
+        playerCards.forEach { $0.isHidden.toggle() }
+        dealerCards.first?.isHidden.toggle()
 
         if playerCards.blackJackCount == .blackjack {
             print("Player Blackjack!")
@@ -61,7 +61,7 @@ class DataController: ObservableObject {
     }
 
     func dealDealerCard() {
-        dealerCards.append(.random)
+        dealerCards.append(.init(isHidden: false))
         if !playerBust,  dealerCards.blackJackCount.amount < 17 {
             dealDealerCard()
             return
@@ -100,7 +100,7 @@ class DataController: ObservableObject {
         guard gameState == .playerTurn else { return }
         objectWillChange.send()
         print("hit")
-        playerCards.append(.random)
+        playerCards.append(.init(isHidden: false))
 
         let cardCount = playerCards.blackJackCount.amount
 
@@ -124,7 +124,7 @@ class DataController: ObservableObject {
     func double() {
         guard gameState == .playerTurn, doubleable else { return }
         print("double")
-        playerCards.append(.random)
+        playerCards.append(.init(isHidden: false))
         bettingAmount *= 2
         playerBust = playerCards.blackJackCount.amount > 21
         print("Player bust")

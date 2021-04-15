@@ -45,22 +45,12 @@ enum BlackjackCount: Equatable {
 extension Array where Element == CardState {
     var blackJackCount: BlackjackCount {
         let sum = reduce(into: 0) { (acc, cardState) in
-            switch cardState {
-            case .showing(let card):
-                acc += card.value.number
-            case .hidden:
-                break
+            if !cardState.isHidden {
+                acc += cardState.card.value.number
             }
         }
 
-        let containsAce = contains { cardState -> Bool in
-            switch cardState {
-            case .showing(let card):
-                return card.value == .ace
-            default:
-                return false
-            }
-        }
+        let containsAce = contains { $0.card.value == .ace }
 
         if containsAce, count == 2, sum == 11 {
             return .blackjack

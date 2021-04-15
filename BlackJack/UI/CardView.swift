@@ -7,8 +7,34 @@
 
 import SwiftUI
 
+struct FlipView<Front: View, Back: View>: View {
+    var isFlipped: Bool
+    var front: () -> Front
+    var back: () -> Back
+
+    init(isFlipped: Bool = false, @ViewBuilder front: @escaping () -> Front, @ViewBuilder back: @escaping () -> Back) {
+        self.isFlipped = isFlipped
+        self.front = front
+        self.back = back
+    }
+
+    var body: some View {
+        ZStack {
+            front()
+                .rotation3DEffect(.degrees(isFlipped == true ? 180 : 0), axis: (x: 0, y: 1, z: 0))
+                .opacity(isFlipped == true ? 0 : 1)
+                .accessibility(hidden: isFlipped == true)
+
+            back()
+                .rotation3DEffect(.degrees(isFlipped == true ? 0 : -180), axis: (x: 0, y: 1, z: 0))
+                .opacity(isFlipped == true ? 1 : 0)
+                .accessibility(hidden: isFlipped == false)
+        }
+    }
+}
+
 struct CardView: View {
-    let card: CardState
+    @Binding var cardState: CardState
 
     var body: some View {
         GeometryReader { geo in
@@ -23,32 +49,33 @@ struct CardView: View {
     }
 
     @ViewBuilder func overlay(geo: GeometryProxy) -> some View {
-        switch card {
-        case .hidden:
-            Image("card-back")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: geo.size.width, height: geo.size.height)
-        case .showing(let card):
-            HStack {
+        FlipView(isFlipped: cardState.isHidden) {
+            HStack(alignment: .top) {
                 VStack {
-                    Text(card.value.display)
-                    Image(systemName: card.suit.imageName)
+                    Text(cardState.card.value.display)
+                    Image(systemName: cardState.card.suit.imageName)
                     Spacer()
                 }
+                .transition(.opacity)
+                .animation(.easeInOut)
                 .padding(10)
                 Spacer()
             }
             .font(.system(size: geo.size.height / 5))
-            .foregroundColor(card.suit.color)
+            .foregroundColor(cardState.card.suit.color)
+        } back: {
+            Image("card-back")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
         }
+        .animation(.linear)
     }
 }
 
-struct CoinView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView(card: .random)
-            .frame(width: 100, height: 100)
-            .background(Color.black)
-    }
-}
+//struct CoinView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardView(cardState: .init(isHidden: false))
+//            .frame(width: 100, height: 100)
+//            .background(Color.black)
+//    }
+//}

@@ -23,11 +23,19 @@ struct CardStack: View {
 
     var body: some View {
         ZStack {
-            ForEach(Array(cards.enumerated()), id: \.0) { (index, card) in
-                CardView(card: card)
+            ForEach(cards.indices, id: \.self) { index in
+                CardView(cardState: $cards[index])
                     .frame(width: cardSize, height: cardSize)
                     .offset(x: CGFloat(index) * cardSize / 2.5)
+                    .transition(
+                        .asymmetric(
+                            insertion: .move(edge: .trailing),
+                            removal: .opacity
+                        )
+                    )
+                    .animation(.linear)
             }
+            .transition(.opacity)
 
             Text(count)
                 .foregroundColor(.black)
@@ -39,6 +47,7 @@ struct CardStack: View {
                             RoundedRectangle(cornerRadius: 8).fill(Color.yellow)
                         )
                 )
+                .transition(.slide)
                 .offset(x: (cardSize / 2.5) * CGFloat(cards.count - 1),
                         y: cardSize / 2)
         }
@@ -48,7 +57,7 @@ struct CardStack: View {
 
 
 struct CardStack_Previews: PreviewProvider {
-    @State static var cards = [CardState.random, CardState.hidden]
+    @State static var cards = [CardState(isHidden: false), CardState(isHidden: false)]
 
     static var previews: some View {
         CardStack(cards: $cards)

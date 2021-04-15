@@ -7,22 +7,21 @@
 
 import Foundation
 
-enum CardState: Hashable, Equatable {
-    case hidden
-    case showing(Card)
+class CardState: ObservableObject, Hashable, Equatable {
+    let card = Card()
 
-    static var random: CardState {
-        return .showing(Card())
+    @Published var isHidden: Bool
+
+    init(isHidden: Bool = true) {
+        self.isHidden = isHidden
     }
 
     static func == (lhs: CardState, rhs: CardState) -> Bool {
-        switch (lhs, rhs) {
-        case (hidden, hidden):
-            return true
-        case (showing(let card1), showing(let card2)):
-            return card1.value == card2.value
-        case (hidden, showing), (showing, hidden):
-            return false
-        }
+        lhs.card == rhs.card && lhs.isHidden == rhs.isHidden
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(card)
+        hasher.combine(isHidden)
     }
 }
