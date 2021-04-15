@@ -24,19 +24,16 @@ struct ContentView: View {
                     .ignoresSafeArea()
 
                 VStack {
-                    HStack {
-                        MoneyBox(amount: 2500)
-                            .frame(width: 200, height: 50)
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    Spacer()
-                    Group {
-                        CardStack(cards: $dataController.dealerCards, didBust: dataController.dealerBust)
-                        Spacer()
-                        CardStack(cards: $dataController.playerCards, didBust: dataController.playerBust)
-                        Spacer()
-                    }
+                    MoneyBox(amount: 2500)
+                        .frame(height: 50)
+                        .padding()
+
+                    CardStack(cards: $dataController.dealerCards,
+                              didBust: dataController.dealerBust)
+                        .padding(.bottom, 32)
+                    CardStack(cards: $dataController.playerCards,
+                              didBust: dataController.playerBust)
+                        .padding(.bottom, 32)
                     BetAmountView()
 
                     Spacer()

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardStack: View {
-    var cardSize: CGFloat = 150
+    var cardSize: CGFloat = 125
 
     @EnvironmentObject var dataController: DataController
 
@@ -23,6 +23,10 @@ struct CardStack: View {
         return cards.blackJackCount.softText
     }
 
+    var animate: Bool {
+        dataController.gameState != .betting
+    }
+
     var body: some View {
         ZStack {
             ForEach(cards.indices, id: \.self) { index in
@@ -35,11 +39,11 @@ struct CardStack: View {
                             removal: .opacity
                         )
                     )
-                    .animation(.linear)
+                    .animation(animate ? .linear : .none)
             }
             .transition(.opacity)
 
-            if count != "0" {
+            if cards.contains { !$0.isHidden } {
                 Text(count)
                     .foregroundColor(.black)
                     .padding()

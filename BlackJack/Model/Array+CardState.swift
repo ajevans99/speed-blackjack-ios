@@ -50,7 +50,9 @@ extension Array where Element == CardState {
             }
         }
 
-        let containsAce = contains { $0.card.value == .ace }
+        let containsAce = contains {
+            !$0.isHidden && $0.card.value == .ace
+        }
 
         if containsAce, count == 2, sum == 11 {
             return .blackjack

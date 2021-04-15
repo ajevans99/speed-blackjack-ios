@@ -68,7 +68,6 @@ struct CardView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
         }
-        .animation(.linear)
     }
 }
 

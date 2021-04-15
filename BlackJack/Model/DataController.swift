@@ -12,7 +12,7 @@ class DataController: ObservableObject {
     // Game state
     @Published var gameState: GameState = .betting
     @Published var balance = 2500
-    @Published var bettingAmount = 0
+    @Published var bettingAmount = 50
 
     // Cards
     @Published var playerCards: [CardState] = []

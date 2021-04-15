@@ -10,7 +10,7 @@ import SwiftUI
 struct Coin: View {
     @EnvironmentObject var dataController: DataController
 
-    static let size: CGFloat = 90
+    static let size: CGFloat = 80
 
     let amount: Int
 
@@ -18,9 +18,11 @@ struct Coin: View {
         Image("coin-\(amount)")
             .resizable()
             .frame(width: Self.size, height: Self.size)
+            .accessibility(addTraits: .isButton)
             .onTapGesture {
                 dataController.bettingAmount += amount
             }
+
     }
 }
 
@@ -54,6 +56,7 @@ struct CoinDeck: View {
                 Coin(amount: 50)
                 Coin(amount: 10)
             }
+            .padding(.horizontal)
         }
     }
 }
