@@ -41,6 +41,26 @@ struct ContentView: View {
                         .padding(.bottom, 32)
                 }
             }
+
+            if gameController.showDirections {
+                Color.black.opacity(0.5)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        gameController.showDirections.toggle()
+                    }
+
+                InformationView()
+            }
+
+            if gameController.showSettings {
+                Color.black.opacity(0.5)
+                    .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        gameController.showSettings.toggle()
+                    }
+
+                SettingsView()
+            }
         }
     }
 

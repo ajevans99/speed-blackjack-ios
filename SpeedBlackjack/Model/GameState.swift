@@ -27,7 +27,7 @@ enum GameState: Equatable {
             case .dealerBust:
                 return "You win. Dealer busted. 🥳"
             case .playerBust:
-                return "House wins. You busted. 🪦"
+                return "Dealer wins. You busted. 🪦"
             case .push:
                 return "Push. 👉👈"
             case .playerBlackjack:

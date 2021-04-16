@@ -14,6 +14,15 @@
 		93587AE82628A61F00F10063 /* GameActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AE72628A61F00F10063 /* GameActionType.swift */; };
 		93587AEB2628A63500F10063 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AEA2628A63500F10063 /* FlipView.swift */; };
 		93587AEE2628A66900F10063 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AED2628A66900F10063 /* Coin.swift */; };
+		93587AF42628AECA00F10063 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AF32628AECA00F10063 /* InformationView.swift */; };
+		93587AFA262936CC00F10063 /* BasicStrategy_Hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 93587AF7262936CC00F10063 /* BasicStrategy_Hard.json */; };
+		93587AFB262936CC00F10063 /* BasicStrategy_Split.json in Resources */ = {isa = PBXBuildFile; fileRef = 93587AF8262936CC00F10063 /* BasicStrategy_Split.json */; };
+		93587AFC262936CC00F10063 /* BasicStrategy_Soft.json in Resources */ = {isa = PBXBuildFile; fileRef = 93587AF9262936CC00F10063 /* BasicStrategy_Soft.json */; };
+		93587AFF2629394600F10063 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587AFE2629394600F10063 /* SettingsView.swift */; };
+		93587B0226293B3C00F10063 /* StrategyChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B0126293B3C00F10063 /* StrategyChart.swift */; };
+		93587B0726293F6500F10063 /* StrategyCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B0626293F6500F10063 /* StrategyCharts.swift */; };
+		93587B0C262945A600F10063 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B0B262945A600F10063 /* JSON.swift */; };
+		93587B0F2629460300F10063 /* StrategyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B0E2629460300F10063 /* StrategyController.swift */; };
 		9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9361B03226281BA6006A5617 /* Binding+Equatable.swift */; };
 		9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */; };
 		9390C6C62625548400E8A518 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C52625548400E8A518 /* ContentView.swift */; };
@@ -40,6 +49,15 @@
 		93587AE72628A61F00F10063 /* GameActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionType.swift; sourceTree = "<group>"; };
 		93587AEA2628A63500F10063 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		93587AED2628A66900F10063 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		93587AF32628AECA00F10063 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
+		93587AF7262936CC00F10063 /* BasicStrategy_Hard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicStrategy_Hard.json; sourceTree = "<group>"; };
+		93587AF8262936CC00F10063 /* BasicStrategy_Split.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicStrategy_Split.json; sourceTree = "<group>"; };
+		93587AF9262936CC00F10063 /* BasicStrategy_Soft.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BasicStrategy_Soft.json; sourceTree = "<group>"; };
+		93587AFE2629394600F10063 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		93587B0126293B3C00F10063 /* StrategyChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyChart.swift; sourceTree = "<group>"; };
+		93587B0626293F6500F10063 /* StrategyCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyCharts.swift; sourceTree = "<group>"; };
+		93587B0B262945A600F10063 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		93587B0E2629460300F10063 /* StrategyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyController.swift; sourceTree = "<group>"; };
 		9361B03226281BA6006A5617 /* Binding+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Equatable.swift"; sourceTree = "<group>"; };
 		9390C6C02625548400E8A518 /* SpeedBlackjack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedBlackjack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedBlackjackApp.swift; sourceTree = "<group>"; };
@@ -83,6 +101,25 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		93587AF62629367E00F10063 /* BasicStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				93587AF7262936CC00F10063 /* BasicStrategy_Hard.json */,
+				93587AF9262936CC00F10063 /* BasicStrategy_Soft.json */,
+				93587AF8262936CC00F10063 /* BasicStrategy_Split.json */,
+			);
+			path = BasicStrategy;
+			sourceTree = "<group>";
+		};
+		93587B0426293B4000F10063 /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				93587B0126293B3C00F10063 /* StrategyChart.swift */,
+				93587B0626293F6500F10063 /* StrategyCharts.swift */,
+			);
+			name = Strategy;
+			sourceTree = "<group>";
+		};
 		9361B03526281C30006A5617 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */,
+				93587AF62629367E00F10063 /* BasicStrategy */,
 				9390C6FA2626B55400E8A518 /* UI */,
 				9390C6F82626B54B00E8A518 /* Model */,
 				9361B03526281C30006A5617 /* Extensions */,
@@ -133,11 +171,13 @@
 			isa = PBXGroup;
 			children = (
 				9390C6EF2626B25900E8A518 /* GameController.swift */,
+				93587B0E2629460300F10063 /* StrategyController.swift */,
 				93587AE72628A61F00F10063 /* GameActionType.swift */,
 				9390C7002626C41A00E8A518 /* GameState.swift */,
 				9390C6F22626B53900E8A518 /* CardState.swift */,
 				9390C6FC2626B57B00E8A518 /* Array+CardState.swift */,
 				9390C6F52626B54300E8A518 /* Card.swift */,
+				93587B0B262945A600F10063 /* JSON.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +194,9 @@
 				93587AED2628A66900F10063 /* Coin.swift */,
 				93587AE42628A60200F10063 /* GameAction.swift */,
 				9390C6D6262569AA00E8A518 /* GameActions.swift */,
+				93587AFE2629394600F10063 /* SettingsView.swift */,
+				93587B0426293B4000F10063 /* Strategy */,
+				93587AF32628AECA00F10063 /* InformationView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -215,8 +258,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93587AFB262936CC00F10063 /* BasicStrategy_Split.json in Resources */,
 				9390C6CB2625548600E8A518 /* Preview Assets.xcassets in Resources */,
+				93587AFA262936CC00F10063 /* BasicStrategy_Hard.json in Resources */,
 				9390C6C82625548600E8A518 /* Assets.xcassets in Resources */,
+				93587AFC262936CC00F10063 /* BasicStrategy_Soft.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +274,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9390C6F32626B53900E8A518 /* CardState.swift in Sources */,
+				93587B0C262945A600F10063 /* JSON.swift in Sources */,
+				93587AFF2629394600F10063 /* SettingsView.swift in Sources */,
+				93587AF42628AECA00F10063 /* InformationView.swift in Sources */,
+				93587B0226293B3C00F10063 /* StrategyChart.swift in Sources */,
 				93587ADC2628A34D00F10063 /* PlayerCardStacks.swift in Sources */,
 				9390C6E62625735000E8A518 /* CardView.swift in Sources */,
 				9390C6ED262683BE00E8A518 /* MoneyBox.swift in Sources */,
@@ -243,6 +293,8 @@
 				9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */,
 				9390C7012626C41A00E8A518 /* GameState.swift in Sources */,
 				93587AE22628A57000F10063 /* TitleView.swift in Sources */,
+				93587B0726293F6500F10063 /* StrategyCharts.swift in Sources */,
+				93587B0F2629460300F10063 /* StrategyController.swift in Sources */,
 				93587AEB2628A63500F10063 /* FlipView.swift in Sources */,
 				9390C6FD2626B57B00E8A518 /* Array+CardState.swift in Sources */,
 				93587ADF2628A38800F10063 /* DealerCardStack.swift in Sources */,

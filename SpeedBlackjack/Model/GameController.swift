@@ -9,7 +9,11 @@ import Foundation
 import Combine
 
 class GameController: ObservableObject {
-    // Game state
+    // Directions
+    @Published var showDirections = false
+    @Published var showSettings = true
+
+    // Game states
     @Published var gameState: GameState = .betting
     @Published var balance = 2500
     @Published var bettingAmount = 50
@@ -18,6 +22,7 @@ class GameController: ObservableObject {
     @Published var playerCards = [CardState]()
     @Published var dealerCards = [CardState]()
 
+    // Busts
     @Published var playerBust = false
     @Published var dealerBust = false
     @Published var splitBust = false
@@ -52,9 +57,6 @@ class GameController: ObservableObject {
 
     func reset() {
         playerCards = [.init(isHidden: true), .init(isHidden: true)]
-        // split card testing
-//        playerCards = [.init(card: Card(value: .ace, suit: .heart),isHidden: true),
-//                       .init(card: Card(value: .ace, suit: .spade), isHidden: true)]
         dealerCards = [.init(isHidden: true), .init(isHidden: true)]
         splitCards = []
 
@@ -70,16 +72,23 @@ class GameController: ObservableObject {
         if playerCards.blackJackCount == .blackjack {
             print("Player Blackjack!")
             change(to: .dealerTurn)
+            return
+        }
+
+        if dealerCards[0].card.value == .ace, dealerCards[1].card.value.number == 10 {
+            print("Dealer blackjack!")
+            change(to: .dealerTurn)
         }
 
         print(playerCards)
     }
 
     func dealDealerCard() {
-        dealerCards.append(.init(isHidden: false))
-        if !playerBust,  dealerCards.blackJackCount.amount < 17 {
-            dealDealerCard()
-            return
+
+        while !playerBust,
+           dealerCards.blackJackCount.amount < 17,
+           playerCards.blackJackCount != .blackjack {
+            dealerCards.append(.init(isHidden: false))
         }
 
         let dealerCardsCount = dealerCards.blackJackCount.amount
@@ -91,13 +100,13 @@ class GameController: ObservableObject {
             outcome = .playerBust
         } else if dealerCardsCount == playerCardsCount {
             outcome = .push
-        } else if dealerCardsCount > 21 {
-            dealerBust = true
-            outcome = .dealerBust
         } else if dealerCardsCount == 21 && dealerCards.count == 2 {
             outcome = .dealerBlackjack
         } else if playerCardsCount == 21 && playerCards.count == 2 {
             outcome = .playerBlackjack
+        } else if dealerCardsCount > 21 {
+            dealerBust = true
+            outcome = .dealerBust
         } else if playerCardsCount > dealerCardsCount {
             outcome = .playerWin
         } else {
@@ -175,8 +184,8 @@ class GameController: ObservableObject {
         splitCards.append(playerCards.popLast()!)
 
         // Deal random new cards
-        playerCards.append(.init(isHidden: false))
         splitCards.append(.init(isHidden: false))
+        hit() // does append to player cards
 
         balance -= bettingAmount
     }
@@ -221,7 +230,8 @@ class GameController: ObservableObject {
             deal()
         case .dealerTurn:
             splitDeckActive = false
-            _ = dealerCards.popLast()
+//            _ = dealerCards.popLast()
+            dealerCards.last?.isHidden = false
             dealDealerCard()
         case .outcome(let outcome):
             print(outcome)
@@ -234,7 +244,7 @@ class GameController: ObservableObject {
         let splitCardsCount = splitCards.blackJackCount.amount
         let dealerCardsCount = dealerCards.blackJackCount.amount
 
-        if splitCardsCount == 21 && splitCardsCount == 2 {
+        if splitCardsCount == 21 && splitCards.count == 2 {
             return .playerBlackjack
         } else if splitCardsCount > 21 {
             return .playerBust
@@ -242,6 +252,8 @@ class GameController: ObservableObject {
             return .push
         } else if splitCardsCount > dealerCardsCount {
             return .playerWin
+        } else if dealerCardsCount > 21 {
+            return .dealerBust
         } else {
             return .dealerWin
         }

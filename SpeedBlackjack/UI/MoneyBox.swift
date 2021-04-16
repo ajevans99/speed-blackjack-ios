@@ -28,7 +28,7 @@ struct MoneyBox: View {
                 Spacer()
             }
 
-            HStack {
+            HStack(spacing: 8) {
                 Image("coin")
                     .resizable()
                     .frame(width: 50, height: 50)
@@ -50,6 +50,27 @@ struct MoneyBox: View {
                         gameController.change(to: .betting)
                         gameController.balance = 2500
                         gameController.bettingAmount = 50
+                    }
+                Image(systemName: "info.circle.fill")
+                    .resizable()
+                    .frame(width: 35, height: 35)
+                    .foregroundColor(.orange)
+                    .background(Color.white.cornerRadius(25))
+                    .accessibility(addTraits: .isButton)
+                    .onTapGesture {
+                        gameController.showDirections.toggle()
+                    }
+
+                Image(systemName: "gearshape.fill")
+                    .resizable()
+                    .padding(8)
+                    .frame(width: 35, height: 35)
+                    .foregroundColor(.white)
+                    .background(Color.orange)
+                    .clipShape(Circle())
+                    .accessibility(addTraits: .isButton)
+                    .onTapGesture {
+                        gameController.showSettings.toggle()
                     }
             }
         }

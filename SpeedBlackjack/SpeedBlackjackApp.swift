@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct SpeedBlackjackApp: App {
     @StateObject var gameController = GameController()
+    @StateObject var strategyController = StrategyController()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(gameController)
+                .environmentObject(strategyController)
         }
     }
 }
