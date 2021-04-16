@@ -36,9 +36,8 @@ struct ChartItem: View {
         Text(text)
             .fontWeight(isHeader ? .bold : .none)
             .foregroundColor(.white)
-            .frame(width: 27, height: 27)
+            .frame(width: 24, height: 24)
             .background(Circle().fill(color))
-            .shadow(radius: 4)
     }
 }
 

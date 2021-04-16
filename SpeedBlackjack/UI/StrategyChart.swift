@@ -8,28 +8,38 @@
 import SwiftUI
 
 struct StrategyHeaderRow: View {
-    let values = [" "] + (2...10).map(String.init) + ["A"]
+    static let values = [" "] + (2...10).map(String.init) + ["A"]
+
+    var columns: [GridItem] = (0..<StrategyHeaderRow.values.count)
+        .map { _ in GridItem(.adaptive(minimum: 10)) }
+
 
     var body: some View {
-        HStack(spacing: 6) {
-            ForEach(values, id: \.self) { value in
+        LazyVGrid(columns: columns, spacing: 6) {
+            ForEach(Self.values, id: \.self) { value in
                 ChartItem(value, isHeader: true)
             }
         }
+        .background(
+            Color("background")
+                .opacity(0.75)
+                .scaleEffect(.init(width: 2, height: 1.2))
+        )
     }
 }
 
 struct StrategyChart: View {
     var data: [String: [String: String]]
 
-    var body: some View {
-        VStack(spacing: 6) {
-            StrategyHeaderRow()
+    var columns: [GridItem] = (0..<StrategyHeaderRow.values.count)
+        .map { _ in GridItem(.adaptive(minimum: 27)) }
 
-            ForEach(orderedKeys(data), id: \.self) { rowKey in
-                HStack(spacing: 6) {
+    var body: some View {
+        LazyVGrid(columns: columns, spacing: 6, pinnedViews: [.sectionHeaders]) {
+            Section(header: StrategyHeaderRow()) {
+                ForEach(orderedKeys(data), id: \.self) { rowKey in
                     ChartItem(rowKey, isHeader: true)
-                    
+
                     ForEach(orderedKeys(data[rowKey]!), id: \.self) { columnKey in
                         if columnKey == "1" {
                             ChartItem("\(data[rowKey]![columnKey]!)", isHeader: true)
