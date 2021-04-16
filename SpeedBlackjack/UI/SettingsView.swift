@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var gameController: GameController
+    @EnvironmentObject var strategyController: StrategyController
 
     var body: some View {
         ZStack {
@@ -21,7 +22,6 @@ struct SettingsView: View {
                         Spacer()
                         Image(systemName: "xmark.circle.fill")
                             .resizable()
-                            .foregroundColor(.white)
                             .frame(width: 30, height: 30)
                             .padding([.top, .trailing])
                             .accessibility(addTraits: .isButton)
@@ -29,26 +29,62 @@ struct SettingsView: View {
                                 gameController.showSettings.toggle()
                             }
                     }
-                    Image("info-app-icon")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .shadow(radius: 16)
-                        .cornerRadius(24)
-                        .padding()
 
-                    Text("Settings")
+                    Text("Basic Strategy")
                         .bold()
                         .font(.title2)
                         .multilineTextAlignment(.leading)
-                        .foregroundColor(.white)
                         .padding()
-                }
 
-                StrategyCharts()
+                    Toggle(isOn: $strategyController.showHint) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Show Hints")
+                                .bold()
+                            Text("Display basic strategy hints to learn to optimize chance of win.")
+                                .fixedSize(horizontal: false, vertical: true)
+                                .font(.caption)
+                        }
+                    }
+                    .padding()
+
+                    key
+                        .padding(.horizontal)
+
+                    StrategyCharts()
+                }
             }
         }
+        .foregroundColor(.white)
         .padding(.vertical, 128)
         .padding(.horizontal, 32)
+    }
+
+    var key: some View {
+        VStack(spacing: 8) {
+            Text("Key")
+                .font(.headline)
+
+            HStack {
+                Text("Hit")
+                Spacer()
+                ChartItem("H")
+            }
+            HStack {
+                Text("Stand")
+                Spacer()
+                ChartItem("S")
+            }
+            HStack {
+                Text("Double")
+                Spacer()
+                ChartItem("D")
+            }
+            HStack {
+                Text("Split")
+                Spacer()
+                ChartItem("P")
+            }
+        }
     }
 }
 

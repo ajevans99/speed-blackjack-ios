@@ -11,7 +11,7 @@ import Combine
 class GameController: ObservableObject {
     // Directions
     @Published var showDirections = false
-    @Published var showSettings = true
+    @Published var showSettings = false
 
     // Game states
     @Published var gameState: GameState = .betting

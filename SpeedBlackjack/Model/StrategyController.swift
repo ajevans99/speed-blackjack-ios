@@ -11,6 +11,8 @@ import Combine
 class StrategyController: ObservableObject {
     typealias Data = [String: [String: String]]
 
+    @Published var showHint = false
+
     private var jsonHard: JSON?
     private var jsonSoft: JSON?
     private var jsonSplit: JSON?
@@ -54,5 +56,32 @@ class StrategyController: ObservableObject {
 
     private func createDictionaryOfDictionaries(from json: JSON) -> Data {
         json.dictionary.mapValues { $0.dictionary.mapValues { $0.string } }
+    }
+
+    func generateHint(playerCards: [CardState], dealerCards: [CardState]) -> String? {
+        let playerCardsBlackjackCount = playerCards.blackJackCount
+        let dealerCardsBlackjackCount = dealerCards.blackJackCount
+
+        guard
+            playerCardsBlackjackCount.amount < 21,
+            dealerCardsBlackjackCount.amount < 21
+        else {
+            return nil
+        }
+
+        // Split
+        if playerCards[0].card.value.number == playerCards[1].card.value.number
+            && playerCards.count == 2 {
+            return splitHands["\(playerCards[0].card.value.number)"]!["\(dealerCardsBlackjackCount.amount)"]
+        }
+
+        switch playerCardsBlackjackCount {
+        case .soft(let value):
+            return softHands["\(value)"]!["\(dealerCardsBlackjackCount.amount)"]
+        case .hard(let value):
+            return hardHands["\(value)"]!["\(dealerCardsBlackjackCount.amount)"]
+        case .blackjack:
+            return nil
+        }
     }
 }

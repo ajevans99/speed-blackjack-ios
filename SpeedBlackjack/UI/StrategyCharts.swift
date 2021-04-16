@@ -12,26 +12,17 @@ struct StrategyCharts: View {
 
     var body: some View {
         VStack {
-            Text("Basic Strategy")
-                .bold()
-                .font(.title3)
-                .foregroundColor(.white)
-                .padding()
-
             Text("Hard Hands")
-                .foregroundColor(.white)
                 .font(.headline)
         
             StrategyChart(data: strategyController.hardHands)
 
             Text("Soft Hands")
-                .foregroundColor(.white)
                 .font(.headline)
 
             StrategyChart(data: strategyController.softHands)
 
             Text("Pair Hands")
-                .foregroundColor(.white)
                 .font(.headline)
 
             StrategyChart(data: strategyController.splitHands)

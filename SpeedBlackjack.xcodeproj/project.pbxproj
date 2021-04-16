@@ -23,6 +23,7 @@
 		93587B0726293F6500F10063 /* StrategyCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B0626293F6500F10063 /* StrategyCharts.swift */; };
 		93587B0C262945A600F10063 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B0B262945A600F10063 /* JSON.swift */; };
 		93587B0F2629460300F10063 /* StrategyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B0E2629460300F10063 /* StrategyController.swift */; };
+		93587B132629573200F10063 /* ChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93587B122629573200F10063 /* ChartItem.swift */; };
 		9361B03326281BA6006A5617 /* Binding+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9361B03226281BA6006A5617 /* Binding+Equatable.swift */; };
 		9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */; };
 		9390C6C62625548400E8A518 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390C6C52625548400E8A518 /* ContentView.swift */; };
@@ -58,6 +59,7 @@
 		93587B0626293F6500F10063 /* StrategyCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyCharts.swift; sourceTree = "<group>"; };
 		93587B0B262945A600F10063 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		93587B0E2629460300F10063 /* StrategyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyController.swift; sourceTree = "<group>"; };
+		93587B122629573200F10063 /* ChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItem.swift; sourceTree = "<group>"; };
 		9361B03226281BA6006A5617 /* Binding+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Equatable.swift"; sourceTree = "<group>"; };
 		9390C6C02625548400E8A518 /* SpeedBlackjack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedBlackjack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9390C6C32625548400E8A518 /* SpeedBlackjackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedBlackjackApp.swift; sourceTree = "<group>"; };
@@ -111,13 +113,15 @@
 			path = BasicStrategy;
 			sourceTree = "<group>";
 		};
-		93587B0426293B4000F10063 /* Strategy */ = {
+		93587B0426293B4000F10063 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				93587AFE2629394600F10063 /* SettingsView.swift */,
+				93587B122629573200F10063 /* ChartItem.swift */,
 				93587B0126293B3C00F10063 /* StrategyChart.swift */,
 				93587B0626293F6500F10063 /* StrategyCharts.swift */,
 			);
-			name = Strategy;
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		9361B03526281C30006A5617 /* Extensions */ = {
@@ -194,8 +198,7 @@
 				93587AED2628A66900F10063 /* Coin.swift */,
 				93587AE42628A60200F10063 /* GameAction.swift */,
 				9390C6D6262569AA00E8A518 /* GameActions.swift */,
-				93587AFE2629394600F10063 /* SettingsView.swift */,
-				93587B0426293B4000F10063 /* Strategy */,
+				93587B0426293B4000F10063 /* Settings */,
 				93587AF32628AECA00F10063 /* InformationView.swift */,
 			);
 			path = UI;
@@ -288,6 +291,7 @@
 				9390C6EA262677BD00E8A518 /* CardStack.swift in Sources */,
 				93587AE52628A60200F10063 /* GameAction.swift in Sources */,
 				9390C6C62625548400E8A518 /* ContentView.swift in Sources */,
+				93587B132629573200F10063 /* ChartItem.swift in Sources */,
 				9390C6F02626B25900E8A518 /* GameController.swift in Sources */,
 				9390C6F62626B54300E8A518 /* Card.swift in Sources */,
 				9390C6C42625548400E8A518 /* SpeedBlackjackApp.swift in Sources */,

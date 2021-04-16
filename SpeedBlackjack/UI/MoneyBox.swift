@@ -61,8 +61,9 @@ struct MoneyBox: View {
                         gameController.showDirections.toggle()
                     }
 
-                Image(systemName: "gearshape.fill")
+                Image(systemName: "text.book.closed.fill")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .padding(8)
                     .frame(width: 35, height: 35)
                     .foregroundColor(.white)

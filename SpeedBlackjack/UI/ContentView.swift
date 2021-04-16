@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     @EnvironmentObject var gameController: GameController
+    @EnvironmentObject var strategyController: StrategyController
 
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
@@ -36,6 +37,7 @@ struct ContentView: View {
                     CoinDeck()
                         .padding(.vertical, 32)
                 } else {
+                    hints
                     outcomeButtons
                     GameActions()
                         .padding(.bottom, 32)
@@ -102,6 +104,40 @@ struct ContentView: View {
             }
         }
         .opacity(outcomeText == "-" ? 0 : 1)
+    }
+
+    var hintText: String {
+        let hint = strategyController.generateHint(
+            playerCards: gameController.playerCards,
+            dealerCards: gameController.dealerCards
+        )
+
+        let word: String
+        switch hint {
+        case "S":
+            word = "stand"
+        case "D":
+            word = "double"
+        case "P":
+            word = "split"
+        case "H":
+            word = "hit"
+        default:
+            return ""
+        }
+
+        return "Hint: \(word.capitalized)"
+    }
+
+    var hints: some View {
+        Group {
+            if strategyController.showHint {
+                Text(hintText)
+            } else {
+                EmptyView()
+            }
+        }
+        .foregroundColor(.white)
     }
 }
 
