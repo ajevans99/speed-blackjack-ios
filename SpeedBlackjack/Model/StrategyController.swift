@@ -72,6 +72,10 @@ class StrategyController: ObservableObject {
         // Split
         if playerCards[0].card.value.number == playerCards[1].card.value.number
             && playerCards.count == 2 {
+            // Handle double A's special because of json format
+            if playerCards[0].card.value == .ace {
+                return splitHands["A"]!["\(dealerCardsBlackjackCount.amount)"]
+            }
             return splitHands["\(playerCards[0].card.value.number)"]!["\(dealerCardsBlackjackCount.amount)"]
         }
 

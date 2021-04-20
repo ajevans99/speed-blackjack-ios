@@ -56,7 +56,7 @@ class GameController: ObservableObject {
     }
 
     func reset() {
-        playerCards = [.init(isHidden: true), .init(isHidden: true)]
+        playerCards = [.init(card: .init(value: .ace, suit: .diamond), isHidden: true), .init(card: .init(value: .ace, suit: .spade), isHidden: true)]
         dealerCards = [.init(isHidden: true), .init(isHidden: true)]
         splitCards = []
 

@@ -14,8 +14,8 @@ struct CardStack: View {
 
     @Binding var cards: [CardState]
 
-    var didBust = false
-    var showBetAmount = false
+    var didBust: Bool = false
+    var showBetAmount: Bool = false
 
     var count: String {
         if case .outcome(_) = gameController.gameState {

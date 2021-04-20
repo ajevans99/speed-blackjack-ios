@@ -11,7 +11,7 @@ struct StrategyHeaderRow: View {
     static let values = [" "] + (2...10).map(String.init) + ["A"]
 
     var columns: [GridItem] = (0..<StrategyHeaderRow.values.count)
-        .map { _ in GridItem(.adaptive(minimum: 10)) }
+        .map { _ in GridItem(.adaptive(minimum: 27)) }
 
 
     var body: some View {
@@ -54,6 +54,11 @@ struct StrategyChart: View {
     }
 
     func orderedKeys<T>(_ dictionary: [String: T]) -> [String] {
-        return dictionary.keys.map { Int($0)! }.sorted().map(String.init)
+        return dictionary.keys.sorted { (lhs, rhs) -> Bool in
+            if let lhs = Int(lhs), let rhs = Int(rhs) {
+                return lhs < rhs
+            }
+            return Int(rhs) == nil
+        }
     }
 }
