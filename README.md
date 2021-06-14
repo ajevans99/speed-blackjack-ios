@@ -4,7 +4,7 @@
 
  🃏 Welcome to Speed Blackjack! 🃏
 
- 🎰 The fastest, easiest way to learn your favorite casino game. Build with SwiftUI for Swift Student Challenge at WWDC 2021.
+ 🎰 The fastest, easiest way to learn your favorite casino game.
 
  ## Using the App
 
