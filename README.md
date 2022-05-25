@@ -1,5 +1,7 @@
 # Speed Blackjack
 
+> Archived: Repo has been moved to private and major updates have been made for release on App Store.
+
 ![App Icon](https://github.com/ajevans99/blackjack-ios/blob/main/SpeedBlackjack/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60%402x.png)
 
  🃏 Welcome to Speed Blackjack! 🃏
